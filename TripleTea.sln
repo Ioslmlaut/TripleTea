@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripleTea", "TripleTea.csproj", "{842235C1-B4DE-44C5-B889-2964C5D1FCCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{842235C1-B4DE-44C5-B889-2964C5D1FCCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{842235C1-B4DE-44C5-B889-2964C5D1FCCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{842235C1-B4DE-44C5-B889-2964C5D1FCCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{842235C1-B4DE-44C5-B889-2964C5D1FCCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6490F18-13ED-4A38-B530-7A1CB4C2B87D}
+	EndGlobalSection
+EndGlobal
