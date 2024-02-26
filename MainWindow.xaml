@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <TextBlock x:Name="ClockText" FontSize="15" Text="Loading..." 
+                   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,35,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" 
+                   Text="Current Time:" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+        
+        <Button Name="StartEndBtn" Content="Start" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="70" Width="185" Click="StartEndBtn_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="50,250,0,0" VerticalAlignment="Top" Height="70" Width="185"/>
+        <Button x:Name="PauseBtn" Content="Button" HorizontalAlignment="Right" Margin="0,250,50,0" VerticalAlignment="Top" Height="70" Width="185" Click="PauseBtn_Click"/>
+        
+        <TextBlock Name="TimePassedText" HorizontalAlignment="Center" Margin="0,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"/>
 
     </Grid>
 </Window>
