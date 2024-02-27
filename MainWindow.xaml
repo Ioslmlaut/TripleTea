@@ -5,18 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TripleTea"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Triple Tea" Height="450" Width="750">
     <Grid>
-        <TextBlock x:Name="ClockText" FontSize="15" Text="Loading..." 
-                   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,35,0,0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" 
-                   Text="Current Time:" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="190*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="StartPauseBtn" Content="Start" Margin="0,190,0,0" VerticalAlignment="Top" Height="55" Width="80" Click="StartPauseBtn_Click" FontSize="15" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"/>
+        <Button x:Name="EndBtn" Content="End" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="30" Width="118" Click="EndBtn_Click" FontSize="15" Grid.Column="3" Grid.Row="1"/>
         
-        <Button Name="StartEndBtn" Content="Start" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="70" Width="185" Click="StartEndBtn_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="50,250,0,0" VerticalAlignment="Top" Height="70" Width="185"/>
-        <Button x:Name="PauseBtn" Content="Button" HorizontalAlignment="Right" Margin="0,250,50,0" VerticalAlignment="Top" Height="70" Width="185" Click="PauseBtn_Click"/>
-        
-        <TextBlock Name="TimePassedText" HorizontalAlignment="Center" Margin="0,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock Name="TimePassedText" HorizontalAlignment="Center" Margin="0,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Height="30" Grid.Row="1" Grid.Column="3"/>
+
+        <TextBlock Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Triple Tea" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphs" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Calendar" VerticalAlignment="Center" FontSize="20"/>
 
     </Grid>
 </Window>

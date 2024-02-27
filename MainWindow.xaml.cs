@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Threading;
 
 namespace TripleTea
@@ -9,84 +8,66 @@ namespace TripleTea
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DispatcherTimer clock;
         private DispatcherTimer timer;
+        private TimeSpan elapsedTime;
         private DateTime startTime;
 
         private bool paused;
+        private bool firstTime = true;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            // Create a DispatcherTimer to update the time
-            ClockText.Text = DateTime.Now.ToString("HH:mm:ss ddd dd/MM/yyyy");
-
-            timer = new DispatcherTimer();
-            clock = new DispatcherTimer();
-            clock.Interval = TimeSpan.FromSeconds(1); // Update every second
-            clock.Tick += Timer_Tick;
-            clock.Start();
+           timer = new DispatcherTimer();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            // Update the text block with the current time
-            ClockText.Text = DateTime.Now.ToString("HH:mm:ss ddd dd/MM/yyyy");
-        }
 
-        private void StartEndBtn_Click(object sender, RoutedEventArgs e)
+        private void StartPauseBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StartEndBtn.Content.ToString() == "Start")
+            if (StartPauseBtn.Content.ToString() == "Start") // first time start
             {
-                StartTimer();
-                StartEndBtn.Content = "End";
+                timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+                timer.Tick += TimerTick;
+
+                startTime = DateTime.Now;
+                paused = false;
+                firstTime = false;
+
+                // Start the timer
+                timer.Start();
+                StartPauseBtn.Content = "Pause";
             }
-            else
+            else if (StartPauseBtn.Content.ToString() == "Resume") // pressed resume
             {
-                StopTimer();
-                StartEndBtn.Content = "Start";
+                startTime = DateTime.Now - elapsedTime;
+                timer.Start();
+                paused = false;
+                StartPauseBtn.Content = "Pause";
             }
-
-        }
-
-        private void StartTimer()
-        {
-            timer.Interval = TimeSpan.FromSeconds(0);
-            timer.Tick += Timer_Ticks;
-
-            startTime = DateTime.Now;
-
-            // Start the timer
-            timer.Start();
-        }
-        private void StopTimer()
-        {
-            timer.Stop();
-            paused = false;
-        }
-
-        private void Timer_Ticks(object sender, EventArgs e)
-        {
-            // Calculate the elapsed time since the timer started
-            TimeSpan elapsedTime = DateTime.Now - startTime;
-
-            // Update the text block with the elapsed time
-            TimePassedText.Text = elapsedTime.ToString(@"hh\:mm\:ss\:ff");
-        }
-
-        private void PauseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (!paused)
+            else // pressed pause
             {
                 timer.Stop();
                 paused = true;
+                StartPauseBtn.Content = "Resume";
             }
-            else
-            {
-                timer.Start();
-                paused = false;
-            }
+        }
+
+        private void EndBtn_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            paused = true;
+            firstTime = true;
+            StartPauseBtn.Content = "Start";
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            // Calculate the elapsed time since the timer started
+            elapsedTime = DateTime.Now - startTime;
+
+            // Update the text block with the elapsed time
+            TimePassedText.Text = elapsedTime.ToString(@"hh\:mm\:ss\:ff");
         }
     }
 }
