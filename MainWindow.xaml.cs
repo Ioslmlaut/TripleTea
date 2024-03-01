@@ -67,7 +67,7 @@ namespace TripleTea
             elapsedTime = DateTime.Now - startTime;
 
             // Update the text block with the elapsed time
-            TimePassedText.Text = elapsedTime.ToString(@"hh\:mm\:ss\:ff");
+            TimePassedText.Text = elapsedTime.ToString(@"hh\:mm\:ss");
         }
     }
 }

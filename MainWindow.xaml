@@ -5,27 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TripleTea"
         mc:Ignorable="d"
-        Title="Triple Tea" Height="450" Width="750">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        Title="Triple Tea" Height="450" Width="700" MinHeight="450" MinWidth="700" MaxHeight="650" MaxWidth="900">
+        
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="27*"/>
-            <RowDefinition Height="190*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="185*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="9*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
-
-        <Button x:Name="StartPauseBtn" Content="Start" Margin="0,190,0,0" VerticalAlignment="Top" Height="55" Width="80" Click="StartPauseBtn_Click" FontSize="15" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"/>
-        <Button x:Name="EndBtn" Content="End" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="30" Width="118" Click="EndBtn_Click" FontSize="15" Grid.Column="3" Grid.Row="1"/>
         
-        <TextBlock Name="TimePassedText" HorizontalAlignment="Center" Margin="0,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Height="30" Grid.Row="1" Grid.Column="3"/>
+        <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="0,0,0,1"/>
 
-        <TextBlock Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Triple Tea" VerticalAlignment="Center" FontSize="20"/>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphs" VerticalAlignment="Center" FontSize="20"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Calendar" VerticalAlignment="Center" FontSize="20"/>
+        <!-- Column Separators -->
+        <!-- Between Column 0 and Column 1 -->
+        <Border Grid.Column="0" Grid.RowSpan="1" BorderBrush="Black" BorderThickness="0,0,1,0"/>
+
+        <!-- Between Column 1 and Column 2 -->
+        <Border Grid.Column="1" Grid.RowSpan="1" BorderBrush="Black" BorderThickness="0,0,1,0"/>
+
+        <!-- Between Column 2 and Column 3 -->
+        <Border Grid.Column="2" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="0,0,1,0"/>
+
+        <Button x:Name="StartPauseBtn" Content="Start" VerticalAlignment="Top" Height="55" Width="100" Click="StartPauseBtn_Click" FontSize="15" HorizontalAlignment="Center" Margin="0,220,0,0" Grid.Column="3" Grid.Row="1"/>
+        <Button x:Name="EndBtn" Content="End" HorizontalAlignment="Center" Margin="0,295,0,0" VerticalAlignment="Top" Height="30" Width="118" Click="EndBtn_Click" FontSize="15" Grid.Column="3" Grid.Row="1"/>
+
+        <TextBlock Name="TimePassedText" HorizontalAlignment="Center" Margin="0,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Height="50" Grid.Row="1" Grid.Column="3" TextAlignment="Center" Width="0"/>
+
+        <TextBlock Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Triple Tea" VerticalAlignment="Center" FontSize="20" Height="24" Width="88"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphs" VerticalAlignment="Center" FontSize="20" Height="24" Width="64"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Calendar" VerticalAlignment="Center" FontSize="20" Height="24" Width="80"/>
 
     </Grid>
 </Window>
