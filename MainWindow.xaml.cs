@@ -23,34 +23,17 @@ namespace TripleTea
         }
 
 
-        private void StartPauseBtn_Click(object sender, RoutedEventArgs e)
+        private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StartPauseBtn.Content.ToString() == "Start") // first time start
-            {
-                timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
-                timer.Tick += TimerTick;
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            timer.Tick += TimerTick;
 
-                startTime = DateTime.Now;
-                paused = false;
-                firstTime = false;
+            startTime = DateTime.Now;
+            paused = false;
+            firstTime = false;
 
-                // Start the timer
-                timer.Start();
-                StartPauseBtn.Content = "Pause";
-            }
-            else if (StartPauseBtn.Content.ToString() == "Resume") // pressed resume
-            {
-                startTime = DateTime.Now - elapsedTime;
-                timer.Start();
-                paused = false;
-                StartPauseBtn.Content = "Pause";
-            }
-            else // pressed pause
-            {
-                timer.Stop();
-                paused = true;
-                StartPauseBtn.Content = "Resume";
-            }
+            // Start the timer
+            timer.Start();
         }
 
         private void EndBtn_Click(object sender, RoutedEventArgs e)
