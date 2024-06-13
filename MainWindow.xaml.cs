@@ -19,7 +19,7 @@ namespace TripleTea
         {
             InitializeComponent();
 
-           timer = new DispatcherTimer();
+            timer = new DispatcherTimer();
         }
 
 
@@ -41,7 +41,6 @@ namespace TripleTea
             timer.Stop();
             paused = true;
             firstTime = true;
-            StartPauseBtn.Content = "Start";
         }
 
         private void TimerTick(object sender, EventArgs e)

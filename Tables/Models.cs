@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TripleTea.Models;
-
-internal class Session
+namespace TripleTea.Tables
 {
-
+    class user
+    {
+        public string Id { get; set; }
+    }
 }
