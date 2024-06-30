@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Threading;
+using TripleTea.Tables;
 
 namespace TripleTea
 {
@@ -19,6 +20,13 @@ namespace TripleTea
         {
             InitializeComponent();
 
+            using var db = new RecordsContext();
+            db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
+            var user = db.users.Add(new users { username = "brat", password = "pass12" } );
+            db.SaveChanges();
+            db.users.Add(new settings { user = user });
+            db.SaveChanges();
             timer = new DispatcherTimer();
         }
 
