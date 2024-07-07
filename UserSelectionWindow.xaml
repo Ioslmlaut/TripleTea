@@ -1,0 +1,19 @@
+﻿<Window x:Class="TripleTea.UserSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TripleTea"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        Background="#17273b"
+        Topmost="True"
+        mc:Ignorable="d"
+        Title="Select User" Height="250" Width="450">
+    <Grid>
+        <ComboBox HorizontalAlignment="Left" Margin="285,129,0,0" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

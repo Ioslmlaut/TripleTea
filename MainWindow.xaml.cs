@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Threading;
 using TripleTea.Tables;
 
@@ -12,6 +13,7 @@ namespace TripleTea
         private DispatcherTimer timer;
         private TimeSpan elapsedTime;
         private DateTime startTime;
+        private DateTime endTime;
 
         private bool paused;
         private bool firstTime = true;
@@ -19,17 +21,47 @@ namespace TripleTea
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
 
             using var db = new RecordsContext();
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
-            var user = db.users.Add(new users { username = "brat", password = "pass12" } );
+
+            var s = DateTime.UtcNow;
+            Thread.Sleep(3000);
+            var e = DateTime.UtcNow;
+            
+
+            var user_list = new List<users>()
+            {
+                new users { username = "brat" },
+                new users { username = "kart" },
+                new users { username = "ofel" }
+            };
+            db.users.AddRange(user_list);
             db.SaveChanges();
-            db.users.Add(new settings { user = user });
+
+            computers acer = new computers { name = "acer_laptop", users = user_list };
+            computers asus = new computers { name = "asus_laptop", users = [user_list[2]] };
+            db.computers.AddRange([acer, asus]);
             db.SaveChanges();
+
+            var records_list = new List<records>()
+            {
+                new records { start_time = s, end_time = e, duration = (e-s), computer = acer, user = user_list[0] },
+                new records { start_time = s, end_time = e, duration = (e-s), computer = acer, user = user_list[1] },
+                new records { start_time = s, end_time = e, duration = (e-s), computer = asus, user = user_list[2] }
+            };
+            db.records.AddRange(records_list);
+            db.SaveChanges();
+
             timer = new DispatcherTimer();
         }
-
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var win = new UserSelectionWindow();
+            win.ShowDialog();
+        }
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -37,8 +69,6 @@ namespace TripleTea
             timer.Tick += TimerTick;
 
             startTime = DateTime.Now;
-            paused = false;
-            firstTime = false;
 
             // Start the timer
             timer.Start();
@@ -47,8 +77,7 @@ namespace TripleTea
         private void EndBtn_Click(object sender, RoutedEventArgs e)
         {
             timer.Stop();
-            paused = true;
-            firstTime = true;
+
         }
 
         private void TimerTick(object sender, EventArgs e)

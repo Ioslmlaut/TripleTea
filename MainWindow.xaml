@@ -13,7 +13,7 @@
         
         Background="#19222e"
         
-        Title="TripleTea" Height="450" Width="700" MinHeight="450" MinWidth="700" MaxHeight="650" MaxWidth="900">
+        Title="TripleTea" Height="450" Width="700" MinHeight="450" MinWidth="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="64"/>
@@ -40,14 +40,17 @@
         <Border Grid.Column="0" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="0,0,1,0"/>
 
 
-        <Button x:Name="StartBtn" Content="Start" VerticalAlignment="Bottom" Height="55" Width="100" Click="StartBtn_Click" FontSize="15" HorizontalAlignment="Center" Margin="0,0,0,90" Grid.Row="1"/>
+        <Button x:Name="StartBtn" Content="Start" VerticalAlignment="Bottom" Height="55" Width="100" Click="StartBtn_Click" FontSize="15" HorizontalAlignment="Center" Grid.Row="1" Margin="0,0,0,130"/>
         <Button x:Name="EndBtn" Content="End" HorizontalAlignment="Center" Margin="0,0,0,45" VerticalAlignment="Bottom" Height="30" Width="118" Click="EndBtn_Click" FontSize="15" Grid.Row="1"/>
+        <Button x:Name="ChangeBtn" Content="Change activity" VerticalAlignment="Bottom" Height="35" Width="118" Click="StartBtn_Click" FontSize="12" HorizontalAlignment="Center" Grid.Row="1" Margin="0,0,0,85"/>
+
 
         <TextBlock x:Name="TimePassedText" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="22" Height="50" Grid.Row="1" TextAlignment="Center" Margin="0,0,0,50"/>
 
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Triple Tea" VerticalAlignment="Center" FontSize="20" Height="24" Width="88"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphs" VerticalAlignment="Center" FontSize="20" Height="24" Width="64"/>
         <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Calendar" VerticalAlignment="Center" FontSize="20" Height="24" Width="80"/>
-
+        
+        <TextBlock x:Name="console" Grid.Column="1" HorizontalAlignment="Center" Margin="0,160,0,0" Grid.Row="1" TextWrapping="Wrap" Text="console" VerticalAlignment="Top" Height="60" Width="140"/>
     </Grid>
 </Window>

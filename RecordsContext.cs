@@ -17,7 +17,7 @@ class RecordsContext : DbContext
     public virtual DbSet<settings> settings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-        optionsBuilder.UseNpgsql(TemporaryAddressRead("address.txt"));
+        optionsBuilder.UseNpgsql(TemporaryAddress());
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -50,8 +50,9 @@ class RecordsContext : DbContext
         .IsRequired(true);
     }
 
-    private string TemporaryAddressRead(string path)
+    private string TemporaryAddress()
     {
+        string path = "C:\\Projects\\TripleTea\\address.txt";
         string text = "";
         try
         {
