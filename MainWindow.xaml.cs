@@ -1,7 +1,16 @@
-﻿using System.IO;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using TripleTea.Tables;
+using Windows.Devices.Radios;
+using Windows.Foundation.Metadata;
+using Windows.System.Profile;
+using Shell32;
 
 namespace TripleTea
 {
@@ -17,12 +26,14 @@ namespace TripleTea
 
         private bool paused;
         private bool firstTime = true;
+        private MediaPlayer? mediaPlayer;
 
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
-
+            string st = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            console.Text = st;
+            Startup.AddToCurrentUser();
             using var db = new RecordsContext();
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
@@ -57,11 +68,6 @@ namespace TripleTea
 
             timer = new DispatcherTimer();
         }
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            var win = new UserSelectionWindow();
-            win.ShowDialog();
-        }
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -77,7 +83,6 @@ namespace TripleTea
         private void EndBtn_Click(object sender, RoutedEventArgs e)
         {
             timer.Stop();
-
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -87,6 +92,11 @@ namespace TripleTea
 
             // Update the text block with the elapsed time
             TimePassedText.Text = elapsedTime.ToString(@"hh\:mm\:ss");
+        }
+
+        private void ChangeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

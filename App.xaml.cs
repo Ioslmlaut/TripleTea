@@ -10,5 +10,4 @@ namespace TripleTea
     public partial class App : Application
     {
     }
-
 }
